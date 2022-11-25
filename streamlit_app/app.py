@@ -71,8 +71,13 @@ with st.sidebar:
     )
     st.header("Tutorial")
 
-
-st.title("Review Word Counter")
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.title("Review Word Counter")
+with col2:
+    st.image(
+        "https://raw.githubusercontent.com/mr-emreerturk/review_word_counter/master/streamlit_app/logo_emf.png?token=GHSAT0AAAAAABZ3SW6CLKYADOZHHFMVOBWGY4BAWIA"
+    )
 
 try:
     col1, col2 = st.columns(2)
@@ -92,11 +97,12 @@ try:
 
     data = pd.read_csv(uploaded_file)
     most_common_words = create_csv_most_common_words(number_of_words, data=data)
-    st.write(most_common_words)
 
-    data_csv = convert_df(most_common_words)
-    st.download_button(
-        "Press to Download", data_csv, "file.csv", "text/csv", key="download-csv"
-    )
+    col1, col2, col3 = st.columns([1, 1, 1])
+    with col2:
+        data_csv = convert_df(most_common_words)
+        st.download_button(
+            "Press to Download", data_csv, "file.csv", "text/csv", key="download-csv"
+        )
 except ValueError:
     pass
