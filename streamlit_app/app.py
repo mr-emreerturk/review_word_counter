@@ -154,18 +154,15 @@ try:
         ~most_common_words.word.isin(unimportant_words)
     ].reset_index(drop=True)
 
-    col1, col2, col3 = st.columns([1, 1, 1])
-    with col2:
-
-        button = st.download_button(
-            "Press to Download",
-            data_csv,
-            "review_word_count.csv",
-            "text/csv",
-            key="download-csv",
-        )
-        if button:
-            st.balloons()
+    button = st.download_button(
+        "Press to Download",
+        data_csv,
+        "review_word_count.csv",
+        "text/csv",
+        key="download-csv",
+    )
+    if button:
+        st.balloons()
 
 except ValueError:
     pass
