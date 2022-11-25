@@ -39,8 +39,8 @@ def convert_df(df):
 
 ### --- SET CONFIGURATION
 st.set_page_config(
-    page_title="Crypto Price & Dev App",
-    page_icon="💰",
+    page_title="Copymining Review Word Counter",
+    page_icon="⛏️",
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
