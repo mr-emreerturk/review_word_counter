@@ -89,6 +89,8 @@ try:
             max_value=5000,
             step=100,
         )
+        column_name = st.text_input("What is the column name of the review column?")
+
     with col2:
         uploaded_file = st.file_uploader(
             label="Drag and Drop your File here",
@@ -97,7 +99,9 @@ try:
         )
 
     data = pd.read_csv(uploaded_file)
-    most_common_words = create_csv_most_common_words(number_of_words, data=data)
+    most_common_words = create_csv_most_common_words(
+        number_of_words, data=data, column_name=column_name
+    )
 
     col1, col2, col3 = st.columns([1, 1, 1])
     with col2:
