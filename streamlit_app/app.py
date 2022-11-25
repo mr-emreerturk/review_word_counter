@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from PIL import Image
 
 ### --- Define Functions
 def flat(lis):
@@ -52,9 +53,8 @@ st.set_page_config(
 
 ### --- CREATE SIDEBAR
 with st.sidebar:
-    st.image(
-        "https://raw.githubusercontent.com/mr-emreerturk/review_word_counter/master/.streamlit/emf_media_logo.png?token=GHSAT0AAAAAABZ3SW6DXPNQ2UQLRJGBULEIY4BEL7Q"
-    )
+    logo = Image.open("emf_media_logo.png")
+    st.image(logo, output_format="png")
     st.header("The App")
     st.markdown(
         """
@@ -104,6 +104,10 @@ try:
     col1, col2, col3 = st.columns([1, 1, 1])
     with col2:
         data_csv = convert_df(most_common_words)
+        most_common_words = most_common_words.rename(
+            {0: "word", 1: "# occurrance"}, axis="columns"
+        )
+
         button = st.download_button(
             "Press to Download",
             data_csv,
@@ -121,3 +125,6 @@ except KeyError:
         "Don't forget Step 2. Write the correct column header for the reviews in the input box.\n Check the name of your columns in your sheet.",
         icon="⚠️",
     )
+
+st.header("Preview")
+st.dataframe(most_common_words, use_container_width=True)
