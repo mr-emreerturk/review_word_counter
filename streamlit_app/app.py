@@ -101,12 +101,15 @@ try:
         number_of_words, data=data, column_name=column_name
     )
 
+    data_csv = convert_df(most_common_words)
+    most_common_words = most_common_words.rename(
+        {0: "word", 1: "# occurrance"}, axis="columns"
+    )
+    list_of_unimportant words = [
+        ""
+    ]
     col1, col2, col3 = st.columns([1, 1, 1])
     with col2:
-        data_csv = convert_df(most_common_words)
-        most_common_words = most_common_words.rename(
-            {0: "word", 1: "# occurrance"}, axis="columns"
-        )
 
         button = st.download_button(
             "Press to Download",
@@ -127,4 +130,10 @@ except KeyError:
     )
 
 st.header("Preview")
-st.dataframe(most_common_words, use_container_width=True)
+try:
+    st.dataframe(most_common_words, use_container_width=True)
+except NameError:
+    st.info(
+        "Please go through steps 1 - 3",
+        icon="ℹ️",
+    )
