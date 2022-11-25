@@ -151,7 +151,7 @@ try:
         "sont",
     ]
     most_common_words = most_common_words[
-        most_common_words.word.isin(unimportant_words).reset_index(drop=True)
+        ~most_common_words.word.isin(unimportant_words).reset_index(drop=True)
     ]
 
     col1, col2, col3 = st.columns([1, 1, 1])
