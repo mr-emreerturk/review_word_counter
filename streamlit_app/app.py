@@ -105,9 +105,7 @@ try:
     most_common_words = most_common_words.rename(
         {0: "word", 1: "# occurrance"}, axis="columns"
     )
-    list_of_unimportant words = [
-        ""
-    ]
+
     col1, col2, col3 = st.columns([1, 1, 1])
     with col2:
 
