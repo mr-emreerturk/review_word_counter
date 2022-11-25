@@ -15,9 +15,9 @@ def flat(lis):
     return flatList
 
 
-def create_csv_most_common_words(number_of_words, data):
+def create_csv_most_common_words(number_of_words: int, data, column_name: str):
     mask_list = []
-    mask_series = data.review.dropna().reset_index(drop=True)
+    mask_series = data[column_name].dropna().reset_index(drop=True)
     for x in range(0, len(mask_series)):
         mask = mask_series[x].split()
         mask_list.append(mask)
