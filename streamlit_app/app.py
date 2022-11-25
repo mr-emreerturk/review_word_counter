@@ -75,8 +75,9 @@ col1, col2 = st.columns([4, 1])
 with col1:
     st.title("Review Word Counter")
 with col2:
+    st.write("")
     st.image(
-        "https://raw.githubusercontent.com/mr-emreerturk/review_word_counter/master/streamlit_app/logo_emf.png?token=GHSAT0AAAAAABZ3SW6CLKYADOZHHFMVOBWGY4BAWIA"
+        "https://raw.githubusercontent.com/mr-emreerturk/review_word_counter/master/streamlit_app/logo_emf.png?token=GHSAT0AAAAAABZ3SW6DX5S5KGPELDL5P3ACY4BBOOQ"
     )
 
 try:
