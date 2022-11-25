@@ -81,22 +81,31 @@ with col2:
     )
 
 try:
-    col1, col2 = st.columns(2)
-    with col1:
-        number_of_words = st.slider(
-            label="How many words do you want to count?",
-            min_value=100,
-            max_value=5000,
-            step=100,
-        )
-        column_name = st.text_input("What is the column name of the review column?")
+    ### --- Step 1: upload file
+    st.header("Step 1: Drop your file here:")
+    # uploaded_file = st.file_uploader(
+    #     label="Drag and Drop your File here",
+    #     accept_multiple_files=False,
+    #     help="Upload your cleaned file here. Make sure adhere to cleaning standards in the tutorial.",
+    # )
 
-    with col2:
-        uploaded_file = st.file_uploader(
-            label="Drag and Drop your File here",
-            accept_multiple_files=False,
-            help="Upload your cleaned file here. Make sure adhere to cleaning standards in the tutorial.",
-        )
+    ### --- Step 2: Choose amount of words
+    st.header("Step 2: Choose how many words you want?")
+    number_of_words = st.slider(
+        label="How many words do you want to count?",
+        min_value=100,
+        max_value=5000,
+        step=100,
+    )
+    ### --- Step 3: Name of column
+    st.header("Step 3: What is the name of the review column")
+    column_name = st.text_input("What is the column name of the review column?")
+
+    uploaded_file = st.file_uploader(
+        label="Drag and Drop your File here",
+        accept_multiple_files=False,
+        help="Upload your cleaned file here. Make sure adhere to cleaning standards in the tutorial.",
+    )
 
     data = pd.read_csv(uploaded_file)
     most_common_words = create_csv_most_common_words(
@@ -106,12 +115,20 @@ try:
     col1, col2, col3 = st.columns([1, 1, 1])
     with col2:
         data_csv = convert_df(most_common_words)
-        st.download_button(
+        button = st.download_button(
             "Press to Download",
             data_csv,
             "review_word_count.csv",
             "text/csv",
             key="download-csv",
         )
+        if button:
+            st.balloons()
+
 except ValueError:
     pass
+except KeyError:
+    st.warning(
+        "Don't forget Step 2. Write the correct column header for the reviews in the input box.\n Check the name of your columns in your sheet.",
+        icon="⚠️",
+    )
