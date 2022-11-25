@@ -53,8 +53,8 @@ st.set_page_config(
 
 ### --- CREATE SIDEBAR
 with st.sidebar:
-    logo = Image.open("emf_media_logo.png")
-    st.image(logo, output_format="png")
+    # logo = Image.open("emf_media_logo.png")
+    # st.image(logo, output_format="png")
     st.header("The App")
     st.markdown(
         """
