@@ -52,6 +52,9 @@ st.set_page_config(
 
 ### --- CREATE SIDEBAR
 with st.sidebar:
+    st.image(
+        "https://raw.githubusercontent.com/mr-emreerturk/review_word_counter/master/.streamlit/emf_media_logo.png?token=GHSAT0AAAAAABZ3SW6DXPNQ2UQLRJGBULEIY4BEL7Q"
+    )
     st.header("The App")
     st.markdown(
         """
@@ -71,23 +74,15 @@ with st.sidebar:
     )
     st.header("Tutorial")
 
-col1, col2 = st.columns([4, 1])
-with col1:
-    st.title("Review Word Counter")
-with col2:
-    st.write("")
-    st.image(
-        "https://raw.githubusercontent.com/mr-emreerturk/review_word_counter/master/streamlit_app/logo_emf.png?token=GHSAT0AAAAAABZ3SW6DX5S5KGPELDL5P3ACY4BBOOQ"
-    )
-
+st.title("Review Word Counter")
 try:
     ### --- Step 1: upload file
     st.header("Step 1: Drop your file here:")
-    # uploaded_file = st.file_uploader(
-    #     label="Drag and Drop your File here",
-    #     accept_multiple_files=False,
-    #     help="Upload your cleaned file here. Make sure adhere to cleaning standards in the tutorial.",
-    # )
+    uploaded_file = st.file_uploader(
+        label="Drag and Drop your File here",
+        accept_multiple_files=False,
+        help="Upload your cleaned file here. Make sure adhere to cleaning standards in the tutorial.",
+    )
 
     ### --- Step 2: Choose amount of words
     st.header("Step 2: Choose how many words you want?")
@@ -100,12 +95,6 @@ try:
     ### --- Step 3: Name of column
     st.header("Step 3: What is the name of the review column")
     column_name = st.text_input("What is the column name of the review column?")
-
-    uploaded_file = st.file_uploader(
-        label="Drag and Drop your File here",
-        accept_multiple_files=False,
-        help="Upload your cleaned file here. Make sure adhere to cleaning standards in the tutorial.",
-    )
 
     data = pd.read_csv(uploaded_file)
     most_common_words = create_csv_most_common_words(
