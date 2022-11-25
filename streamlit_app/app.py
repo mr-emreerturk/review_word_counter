@@ -106,6 +106,14 @@ try:
         {0: "word", 1: "# occurrance"}, axis="columns"
     )
 
+    unimportant_words = [
+        "et", "de", "le", "!", "est", "à", "les", "je", "la", "très", "pas", "pour",
+        "un", "Je", "en", "que", "ne", "suis", "du", "plus", "qui", "une", "Le", "des",
+        "sur", "mais", "ce", "au", "mes", "il", "avec", "a", "mon", "sont", "ce", "au", "mes",
+        "il", "avec", "a", "mon", "sont",
+    ]
+    unimportant_words.word.isin(unimportant_words)].reset_index(drop=True)
+
     col1, col2, col3 = st.columns([1, 1, 1])
     with col2:
 
