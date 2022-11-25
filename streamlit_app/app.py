@@ -107,7 +107,11 @@ try:
     with col2:
         data_csv = convert_df(most_common_words)
         st.download_button(
-            "Press to Download", data_csv, "file.csv", "text/csv", key="download-csv"
+            "Press to Download",
+            data_csv,
+            "review_word_count.csv",
+            "text/csv",
+            key="download-csv",
         )
 except ValueError:
     pass
